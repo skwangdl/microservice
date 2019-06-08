@@ -9,6 +9,7 @@ import com.imooc.user.thrift.ServiceProvider;
 import org.apache.commons.lang.StringUtils;
 import org.apache.thrift.TException;
 import org.apache.tomcat.util.buf.HexUtils;
+import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,7 +64,7 @@ public class UserController {
         String token = genToken();
 
         //3. 缓存用户
-        redisClient.set(token, toDTO(userInfo), 3600);
+//        redisClient.set(token, toDTO(userInfo), 3600);
 
         return new LoginResponse(token);
     }
@@ -176,5 +177,10 @@ public class UserController {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Test
+    public void tempTest(){
+        System.out.println(this.md5("kepler"));
     }
 }
